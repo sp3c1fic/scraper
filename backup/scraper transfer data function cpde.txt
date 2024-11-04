@@ -1,0 +1,188 @@
+
+            if row == 'ah bb kastanjechampignons': # Perhaps this logic will have to be separated out into different functions and simplified
+
+                current_row = inventory_df['Unnamed: 1'][index_row + 1]
+
+                if DataReader.is_dc(current_row, 'Nieuwegein'):
+                    current_total = DataReader.get_current_total(store_data_df, 'ah bb kastanjechampignons', 'Nieuwegein', date_index)
+                    inventory_df[col_name][index_row + 1] = current_total
+                continue
+
+            # this sets the total values from the store_data_df into the inventory_df
+
+            if row == 'ah bio kastanjechamp':  # The logic below must be separated out into a function as it will probably repeat
+                if inventory_df['Unnamed: 1'][index_row + 2] == 'Hoorn':
+
+                    current_total = DataReader.get_current_total(store_data_df, 'ah bio kastanjechamp', 'Hoorn', date_index)
+                    inventory_df[col_name][index_row + 2] = current_total
+
+                if inventory_df['Unnamed: 1'][index_row + 3] == 'Overijssel':
+                    current_total = DataReader.get_current_total(store_data_df, 'ah bio kastanjechamp', 'Overijssel', date_index)
+                    inventory_df[col_name][index_row + 3] = current_total
+
+                if inventory_df['Unnamed: 1'][index_row + 4] == 'Pijnacker':
+                    current_total = DataReader.get_current_total(store_data_df, 'ah bio kastanjechamp', 'Pijnacker', date_index)
+                    inventory_df[col_name][index_row + 4] = current_total
+
+                if inventory_df['Unnamed: 1'][index_row + 5] == 'Tilburg':
+                    current_total = DataReader.get_current_total(store_data_df, 'ah bio kastanjechamp', 'Tilburg', date_index)
+                    inventory_df[col_name][index_row + 5] = current_total
+
+                if inventory_df['Unnamed: 1'][index_row + 6] == 'Zaandam':
+                    current_total = DataReader.get_current_total(store_data_df, 'ah bio kastanjechamp', 'Zaandam', date_index)
+                    inventory_df[col_name][index_row + 6] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 7) == 'Limburg':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 7)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah bio kastanjechamp' , current_dc, date_index)
+                    inventory_df[col_name][index_row + 7] = current_total
+
+                index_row += 1
+
+            if row == 'ah bio oesterzwammen': #re-work the check so that only the product name is used
+                current_dc = DataReader.get_current_dc(inventory_df, index_row, 1)
+                current_total = DataReader.get_current_total(store_data_df, 'ah bio oesterzwammen', current_dc, date_index)
+                inventory_df[col_name][index_row + 1] = current_total
+
+            if row == 'ah bio portobello':
+                current_dc = DataReader.get_current_dc(inventory_df, index_row, 1)
+                current_total = DataReader.get_current_total(store_data_df, 'ah bio portobello', current_dc, date_index)
+                inventory_df[col_name][index_row + 1] = current_total
+
+            if row == 'ah bio shiitake':
+                current_dc = DataReader.get_current_dc(inventory_df, index_row, 1)
+                current_total = DataReader.get_current_total(store_data_df, 'ah bio shiitake', current_dc, date_index)
+                inventory_df[col_name][index_row + 1] = current_total
+
+            if row == 'ah kastanjechampignons' and DataReader.get_current_product_number(inventory_df, index_row) == 77602: # product number to constant
+
+                if DataReader.get_current_dc(inventory_df, index_row, 1) == 'Hoorn':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 1)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah kastanjechampignons', current_dc, date_index)
+                    inventory_df[col_name][index_row + 1] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 2) == 'Overijssel':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 2)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah kastanjechampignons', current_dc, date_index)
+                    inventory_df[col_name][index_row + 2] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 3) == 'Pijnacker':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 3)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah kastanjechampignons', current_dc, date_index)
+                    inventory_df[col_name][index_row + 3] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 4) == 'Tilburg':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 4)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah kastanjechampignons', current_dc, date_index)
+                    inventory_df[col_name][index_row + 4] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 5) == 'Zaandam':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 5)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah kastanjechampignons', current_dc, date_index)
+                    inventory_df[col_name][index_row + 5] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 6) == 'Limburg':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 6)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah kastanjechampignons' , current_dc, date_index)
+                    inventory_df[col_name][index_row + 6] = current_total
+
+            if row == 'ah kleine kastanjechamp' and DataReader.get_current_product_number(inventory_df, index_row) == 83750: # product number to constant
+                current_dc = DataReader.get_current_dc(inventory_df, index_row, 1)
+                current_total = DataReader.get_current_total(store_data_df, 'ah kleine kastanjechamp', current_dc, date_index)
+                inventory_df[col_name][index_row + 1] = current_total
+
+            if row == 'ah witte champignons' and DataReader.get_current_product_number(inventory_df, index_row) == 21012: # product number to constant
+
+                if DataReader.get_current_dc(inventory_df, index_row, 1) == 'Hoorn':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 1)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah witte champignons', current_dc, date_index)
+                    inventory_df[col_name][index_row + 1] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 2) == 'Overijssel':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 2)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah witte champignons', current_dc, date_index)
+                    inventory_df[col_name][index_row + 2] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 3) == 'Pijnacker':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 3)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah witte champignons', current_dc, date_index)
+                    inventory_df[col_name][index_row + 3] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 4) == 'Tilburg':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 4)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah witte champignons', current_dc, date_index)
+                    inventory_df[col_name][index_row + 4] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 5) == 'Zaandam':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 5)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah witte champignons', current_dc, date_index)
+                    inventory_df[col_name][index_row + 5] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 6) == 'Limburg':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 6)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah witte champignons' , current_dc, date_index)
+                    inventory_df[col_name][index_row + 6] = current_total
+
+
+            if row == 'ah witte champignons' and DataReader.get_current_product_number(inventory_df, index_row) == 535883:
+
+                if DataReader.get_current_dc(inventory_df, index_row, 1) == 'Hoorn':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 1)
+                    current_total = DataReader.get_current_total_by_product_number(store_data_df, row, 535883, current_dc, date_index)
+                    inventory_df[col_name][index_row + 1] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 2) == 'Overijssel':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 2)
+                    current_total = DataReader.get_current_total_by_product_number(store_data_df, row, 535883, current_dc, date_index)
+                    inventory_df[col_name][index_row + 2] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 3) == "Pijnacker":
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 3)
+                    current_total = DataReader.get_current_total_by_product_number(store_data_df, row, 535883, current_dc, date_index)
+                    inventory_df[col_name][index_row + 3] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 4) == 'Tilburg':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 4)
+                    current_total = DataReader.get_current_total_by_product_number(store_data_df, row, 535883, current_dc, date_index)
+                    inventory_df[col_name][index_row + 4] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 5) == 'Zaandam':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 5)
+                    current_total = DataReader.get_current_total_by_product_number(store_data_df, row, 535883, current_dc, date_index)
+                    inventory_df[col_name][index_row + 5] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 6) == 'Limburg':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 6)
+                    current_total = DataReader.get_current_total_by_product_number(store_data_df, row, 535883 , current_dc, date_index)
+                    inventory_df[col_name][index_row + 6] = current_total
+
+            if row == 'ah kastanjechampignon' and DataReader.get_current_product_number(inventory_df, index_row) == 846705:
+                if DataReader.get_current_dc(inventory_df, index_row, 1) == 'Hoorn':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 1)
+                    current_total = DataReader.get_current_total_by_product_number(store_data_df, row, 846705, current_dc, date_index)
+                    inventory_df[col_name][index_row + 1] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 2) == 'Overijssel':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 2)
+                    current_total = DataReader.get_current_total_by_product_number(store_data_df, row, 846705, current_dc, date_index)
+                    inventory_df[col_name][index_row + 2] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 3) == 'Pijnacker':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 3)
+                    current_total = DataReader.get_current_total_by_product_number(store_data_df, row, 846705, current_dc, date_index)
+                    inventory_df[col_name][index_row + 3] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 4) == 'Tilburg':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 4)
+                    current_total = DataReader.get_current_total_by_product_number(store_data_df, row, 846705, current_dc, date_index)
+                    inventory_df[col_name][index_row + 4] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 5) == 'Zaandam':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 5)
+                    current_total = DataReader.get_current_total_by_product_number(store_data_df, row, 846705, current_dc, date_index)
+                    inventory_df[col_name][index_row + 5] = current_total
+
+                if DataReader.get_current_dc(inventory_df, index_row, 6) == 'Limburg':
+                    current_dc = DataReader.get_current_dc(inventory_df, index_row, 6)
+                    current_total = DataReader.get_current_total(store_data_df, 'ah witte champignons' , current_dc, date_index)
+                    inventory_df[col_name][index_row + 6] = current_total
